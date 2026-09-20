@@ -8,7 +8,7 @@
 		<title>EaglercraftX 1.20.6 WASM-GC</title>
 		<meta property="og:locale" content="en-US" />
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="EaglercraftX 1.20.6 WASM-GC" />
+		<meta property="og:title" content="EaglercraftX 1.20.6 WASM-GC</title>
 		<meta property="og:description" content="Play minecraft 1.20.6 in your browser" />
 		<meta property="og:image" content="favicon.png" />
 		<link type="image/png" rel="shortcut icon" href="favicon.png" />
@@ -19,14 +19,11 @@
 				if(window.location.href.indexOf("file:") === 0) {
 					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
 				}else {
-					
-					// %%%%%%%%% launch options %%%%%%%%%%%%
-					
 					var relayId = Math.floor(Math.random() * 4);
 					window.eaglercraftXOpts = {
 						demoMode: false,
 						container: "game_frame",
-						assetsURI: "https://github.com/nytrox-bw/playopspt.github.io/releases/download/v1.0.0/120.epw",
+						assetsURI: "/epw/120.epw",
 						worldsDB: "worlds",
 						servers: [
 							/* example: { addr: "ws://localhost:8081/", name: "Local test server" } */
@@ -38,18 +35,13 @@
 							{ addr: "wss://relay.mcjs.link/", comment: "MCJS public relay", primary: relayId == 3 }
 						]
 					};
-					
-					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-					
 					var q = window.location.search;
 					if((typeof q === "string") && q[0] === "?" && (typeof window.URLSearchParams !== "undefined")) {
 						q = new window.URLSearchParams(q);
 						var s = q.get("server");
 						if(s) window.eaglercraftXOpts.joinServer = s;
 					}
-					
 					main();
-					
 				}
 			});
 		</script>
