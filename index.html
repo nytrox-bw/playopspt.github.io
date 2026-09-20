@@ -7,17 +7,51 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#0b0b0d;color:#f5f5f5;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-.card{width:min(520px,100%);border:1px solid #24242a;border-radius:14px;background:#111114;padding:28px}
-h1{margin:0;font-size:30px}.sub{margin:8px 0 24px;color:#8f8f98;font-size:14px}
-a{display:flex;align-items:center;justify-content:center;text-decoration:none;background:#fff;color:#111;border-radius:9px;padding:13px 16px;font-size:14px;font-weight:700}
+.wrap{max-width:900px;margin:0 auto;padding:48px 20px 64px}
+h1{margin:0;font-size:30px;letter-spacing:-.5px}
+.sub{margin:7px 0 32px;color:#8f8f98;font-size:14px}
+.list{border:1px solid #24242a;border-radius:12px;overflow:hidden;background:#111114}
+.row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 16px;border-bottom:1px solid #24242a}
+.row:last-child{border-bottom:0}
+.name{font-size:15px;font-weight:600}
+.type{font-size:12px;color:#777780;margin-top:3px}
+button.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #33343b;background:#1b1b20;color:#fff;border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600;cursor:pointer}
+button.launch{background:#fff;color:#111;border-color:#fff}
+@media(max-width:600px){.wrap{padding:28px 12px 40px}.row{align-items:flex-start;flex-direction:column}.btn{width:100%}}
 </style>
 </head>
 <body>
-<main class="wrap"><section class="card">
+<main class="wrap">
 <h1>Launcher</h1>
-<p class="sub">Open the launcher in a separate tab.</p>
-<a href="./launcher.html" target="_blank" rel="noopener">Open Launcher</a>
-</section></main>
+<p class="sub">Choose a launcher</p>
+<div class="list">
+<div class="row"><div><div class="name">262</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./262/index.html?v=292fa5ab221d7e6c')">Launch</button></div>
+<div class="row"><div><div class="name">120</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./120/index.html?v=20260824-5430efd6')">Launch</button></div>
+<div class="row"><div><div class="name">r1710</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./r1710/')">Launch</button></div>
+<div class="row"><div><div class="name">r147</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./r147/')">Launch</button></div>
+<div class="row"><div><div class="name">beta6</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./beta6/')">Launch</button></div>
+<div class="row"><div><div class="name">beta</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./beta/')">Launch</button></div>
+<div class="row"><div><div class="name">alpha</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./alpha/')">Launch</button></div>
+<div class="row"><div><div class="name">1.7.10</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./1.7.10.html')">Launch</button></div>
+</div>
+</main>
+<script>
+function openBlank(url){
+  const win=window.open("about:blank","_blank");
+  if(!win)return;
+  const target=new URL(url,window.location.href).href;
+  win.document.open();
+  win.document.write(
+    '<!doctype html><html><head><meta charset="utf-8"><title>Launcher</title></head>'+
+    '<body style="margin:0;overflow:hidden;background:#fff">'+
+    '<iframe src="'+target.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" '+
+    'style="position:fixed;inset:0;width:100%;height:100%;border:0" '+
+    'allow="fullscreen; autoplay; gamepad" allowfullscreen></iframe>'+
+    '</body></html>'
+  );
+  win.document.close();
+  win.focus();
+}
+</script>
 </body>
 </html>
