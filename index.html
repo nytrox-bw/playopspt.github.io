@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PlayOps</title>
+  <title>Launcher</title>
   <meta name="description" content="Simple file launcher">
   <style>
     *{box-sizing:border-box}
@@ -27,20 +27,20 @@
 </head>
 <body>
   <main class="wrap">
-    <h1>PlayOps</h1>
+    <h1>Launcher</h1>
     <p class="sub">Files & launchers</p>
 
     <h2>Launch</h2>
     <div class="list">
-      <div class="row"><div><div class="name">262</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./262/index.html?v=292fa5ab221d7e6c">Launch</a></div></div>
-      <div class="row"><div><div class="name">120</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./120/index.html?v=20260824-5430efd6">Launch</a></div></div>
-      <div class="row"><div><div class="name">114</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./114/index.html">Launch</a></div></div>
-      <div class="row"><div><div class="name">r1710</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./r1710/">Launch</a></div></div>
-      <div class="row"><div><div class="name">r147</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./r147/">Launch</a></div></div>
-      <div class="row"><div><div class="name">beta6</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./beta6/">Launch</a></div></div>
-      <div class="row"><div><div class="name">beta</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./beta/">Launch</a></div></div>
-      <div class="row"><div><div class="name">alpha</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./alpha/">Launch</a></div></div>
-      <div class="row"><div><div class="name">1.7.10.html</div><div class="type">HTML file</div></div><div class="buttons"><a class="btn launch" href="./1.7.10.html">Launch</a></div></div>
+      <div class="row"><div><div class="name">262</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./262/index.html?v=292fa5ab221d7e6c" onclick="launchBlank(event,this.href)">Launch</a></div></div>
+      <div class="row"><div><div class="name">120</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./120/index.html?v=20260824-5430efd6" onclick="launchBlank(event,this.href)">Launch</a></div></div>
+      <div class="row"><div><div class="name">114</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./114/index.html" onclick="launchBlank(event,this.href)">Launch</a></div></div>
+      <div class="row"><div><div class="name">r1710</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./r1710/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
+      <div class="row"><div><div class="name">r147</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./r147/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
+      <div class="row"><div><div class="name">beta6</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./beta6/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
+      <div class="row"><div><div class="name">beta</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./beta/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
+      <div class="row"><div><div class="name">alpha</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./alpha/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
+      <div class="row"><div><div class="name">1.7.10.html</div><div class="type">HTML file</div></div><div class="buttons"><a class="btn launch" href="./1.7.10.html" onclick="launchBlank(event,this.href)">Launch</a></div></div>
     </div>
 
     <h2>Files</h2>
@@ -61,5 +61,24 @@
       <div class="row"><div><div class="name">dirt_texture.png</div><div class="type">Image</div></div><div class="buttons"><a class="btn" href="./dirt_texture.png">Open</a></div></div>
     </div>
   </main>
+
+  <script>
+    function launchBlank(url){
+      event.preventDefault();
+      const win = window.open("about:blank","_blank");
+      if(!win){
+        window.location.href = url;
+        return;
+      }
+      try{
+        win.document.open();
+        win.document.write('<!doctype html><html><head><title>Loading...</title></head><body style="margin:0;background:#000"></body></html>');
+        win.document.close();
+        win.location.replace(url);
+      }catch(e){
+        win.location.href = url;
+      }
+    }
+  </script>
 </body>
 </html>
