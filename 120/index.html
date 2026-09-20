@@ -22,11 +22,11 @@
 					
 					// %%%%%%%%% launch options %%%%%%%%%%%%
 					
-					var relayId = Math.floor(Math.random() * 3);
+					var relayId = Math.floor(Math.random() * 4);
 					window.eaglercraftXOpts = {
 						demoMode: false,
 						container: "game_frame",
-						assetsURI: "https://raw.githubusercontent.com/eymenwsmc/offline/main/120.epw?v=5430efd6",
+						assetsURI: "https://github.com/nytrox-bw/playopspt.github.io/releases/download/v1.0.0/120.epw",
 						worldsDB: "worlds",
 						servers: [
 							/* example: { addr: "ws://localhost:8081/", name: "Local test server" } */
@@ -34,7 +34,8 @@
 						relays: [
 							{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
 							{ addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId == 1 },
-							{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 2 }
+							{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 2 },
+							{ addr: "wss://relay.mcjs.link/", comment: "MCJS public relay", primary: relayId == 3 }
 						]
 					};
 					
