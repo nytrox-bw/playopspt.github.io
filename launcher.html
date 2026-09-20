@@ -15,8 +15,8 @@ h1{margin:0;font-size:30px;letter-spacing:-.5px}
 .row:last-child{border-bottom:0}
 .name{font-size:15px;font-weight:600}
 .type{font-size:12px;color:#777780;margin-top:3px}
-a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #33343b;background:#1b1b20;color:#fff;border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600}
-a.launch{background:#fff;color:#111;border-color:#fff}
+button.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #33343b;background:#1b1b20;color:#fff;border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600;cursor:pointer}
+button.launch{background:#fff;color:#111;border-color:#fff}
 @media(max-width:600px){.wrap{padding:28px 12px 40px}.row{align-items:flex-start;flex-direction:column}.btn{width:100%}}
 </style>
 </head>
@@ -25,15 +25,33 @@ a.launch{background:#fff;color:#111;border-color:#fff}
 <h1>Launcher</h1>
 <p class="sub">Choose a launcher</p>
 <div class="list">
-<div class="row"><div><div class="name">262</div><div class="type">Launcher</div></div><a class="btn launch" href="./262/index.html?v=292fa5ab221d7e6c" target="_blank" rel="noopener">Launch</a></div>
-<div class="row"><div><div class="name">120</div><div class="type">Launcher</div></div><a class="btn launch" href="./120/index.html?v=20260824-5430efd6" target="_blank" rel="noopener">Launch</a></div>
-<div class="row"><div><div class="name">r1710</div><div class="type">Launcher</div></div><a class="btn launch" href="./r1710/" target="_blank" rel="noopener">Launch</a></div>
-<div class="row"><div><div class="name">r147</div><div class="type">Launcher</div></div><a class="btn launch" href="./r147/" target="_blank" rel="noopener">Launch</a></div>
-<div class="row"><div><div class="name">beta6</div><div class="type">Launcher</div></div><a class="btn launch" href="./beta6/" target="_blank" rel="noopener">Launch</a></div>
-<div class="row"><div><div class="name">beta</div><div class="type">Launcher</div></div><a class="btn launch" href="./beta/" target="_blank" rel="noopener">Launch</a></div>
-<div class="row"><div><div class="name">alpha</div><div class="type">Launcher</div></div><a class="btn launch" href="./alpha/" target="_blank" rel="noopener">Launch</a></div>
-<div class="row"><div><div class="name">1.7.10</div><div class="type">Launcher</div></div><a class="btn launch" href="./1.7.10.html" target="_blank" rel="noopener">Launch</a></div>
+<div class="row"><div><div class="name">262</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./262/index.html?v=292fa5ab221d7e6c')">Launch</button></div>
+<div class="row"><div><div class="name">120</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./120/index.html?v=20260824-5430efd6')">Launch</button></div>
+<div class="row"><div><div class="name">r1710</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./r1710/')">Launch</button></div>
+<div class="row"><div><div class="name">r147</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./r147/')">Launch</button></div>
+<div class="row"><div><div class="name">beta6</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./beta6/')">Launch</button></div>
+<div class="row"><div><div class="name">beta</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./beta/')">Launch</button></div>
+<div class="row"><div><div class="name">alpha</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./alpha/')">Launch</button></div>
+<div class="row"><div><div class="name">1.7.10</div><div class="type">Launcher</div></div><button class="btn launch" onclick="openBlank('./1.7.10.html')">Launch</button></div>
 </div>
 </main>
+<script>
+function openBlank(url){
+  const win=window.open("about:blank","_blank");
+  if(!win)return;
+  const target=new URL(url,window.location.href).href;
+  win.document.open();
+  win.document.write(
+    '<!doctype html><html><head><meta charset="utf-8"><title>Launcher</title></head>'+
+    '<body style="margin:0;overflow:hidden;background:#fff">'+
+    '<iframe src="'+target.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" '+
+    'style="position:fixed;inset:0;width:100%;height:100%;border:0" '+
+    'allow="fullscreen; autoplay; gamepad" allowfullscreen></iframe>'+
+    '</body></html>'
+  );
+  win.document.close();
+  win.focus();
+}
+</script>
 </body>
 </html>
