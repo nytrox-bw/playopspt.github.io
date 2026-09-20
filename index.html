@@ -1,90 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Launcher</title>
-  <meta name="description" content="Simple file launcher">
-  <style>
-    *{box-sizing:border-box}
-    body{margin:0;background:#0b0b0d;color:#f5f5f5;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    .wrap{max-width:900px;margin:0 auto;padding:48px 20px 64px}
-    h1{margin:0;font-size:30px;letter-spacing:-.5px}
-    .sub{margin:7px 0 32px;color:#8f8f98;font-size:14px}
-    h2{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:#777780;margin:30px 0 10px}
-    .list{border:1px solid #24242a;border-radius:12px;overflow:hidden;background:#111114}
-    .row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 16px;border-bottom:1px solid #24242a}
-    .row:last-child{border-bottom:0}
-    .name{font-size:15px;font-weight:600;word-break:break-all}
-    .type{font-size:12px;color:#777780;margin-top:3px}
-    .buttons{display:flex;gap:8px;flex-shrink:0}
-    a.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #33343b;background:#1b1b20;color:#fff;border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600}
-    a.btn:hover{background:#27272d;border-color:#4a4b54}
-    a.launch{background:#fff;color:#111;border-color:#fff}
-    a.launch:hover{background:#ddd}
-    @media(max-width:600px){.wrap{padding:28px 12px 40px}.row{align-items:flex-start;flex-direction:column}.buttons{width:100%}.buttons .btn{flex:1}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Launcher</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b0b0d;color:#f5f5f5;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:min(520px,100%);border:1px solid #24242a;border-radius:14px;background:#111114;padding:28px}
+h1{margin:0;font-size:30px}.sub{margin:8px 0 24px;color:#8f8f98;font-size:14px}
+a{display:flex;align-items:center;justify-content:center;text-decoration:none;background:#fff;color:#111;border-radius:9px;padding:13px 16px;font-size:14px;font-weight:700}
+</style>
 </head>
 <body>
-  <main class="wrap">
-    <h1>Launcher</h1>
-    <p class="sub">Files & launchers</p>
-
-    <h2>Launch</h2>
-    <div class="list">
-      <div class="row"><div><div class="name">262</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./262/index.html?v=292fa5ab221d7e6c" onclick="launchBlank(event,this.href)">Launch</a></div></div>
-      <div class="row"><div><div class="name">120</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./120/index.html?v=20260824-5430efd6" onclick="launchBlank(event,this.href)">Launch</a></div></div>
-      <div class="row"><div><div class="name">r1710</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./r1710/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
-      <div class="row"><div><div class="name">r147</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./r147/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
-      <div class="row"><div><div class="name">beta6</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./beta6/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
-      <div class="row"><div><div class="name">beta</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./beta/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
-      <div class="row"><div><div class="name">alpha</div><div class="type">Folder</div></div><div class="buttons"><a class="btn launch" href="./alpha/" onclick="launchBlank(event,this.href)">Launch</a></div></div>
-      <div class="row"><div><div class="name">1.7.10.html</div><div class="type">HTML file</div></div><div class="buttons"><a class="btn launch" href="./1.7.10.html" onclick="launchBlank(event,this.href)">Launch</a></div></div>
-    </div>
-
-    <h2>Files</h2>
-    <div class="list">
-      <div class="row"><div><div class="name">changelog.html</div><div class="type">HTML</div></div><div class="buttons"><a class="btn" href="./changelog.html">Open</a></div></div>
-      <div class="row"><div><div class="name">downloads.html</div><div class="type">HTML</div></div><div class="buttons"><a class="btn" href="./downloads.html">Open</a></div></div>
-      <div class="row"><div><div class="name">getting-started.html</div><div class="type">HTML</div></div><div class="buttons"><a class="btn" href="./getting-started.html">Open</a></div></div>
-      <div class="row"><div><div class="name">privacy.html</div><div class="type">HTML</div></div><div class="buttons"><a class="btn" href="./privacy.html">Open</a></div></div>
-      <div class="row"><div><div class="name">servers.html</div><div class="type">HTML</div></div><div class="buttons"><a class="btn" href="./servers.html">Open</a></div></div>
-      <div class="row"><div><div class="name">terms.html</div><div class="type">HTML</div></div><div class="buttons"><a class="btn" href="./terms.html">Open</a></div></div>
-      <div class="row"><div><div class="name">robots.txt</div><div class="type">Text</div></div><div class="buttons"><a class="btn" href="./robots.txt">Open</a></div></div>
-      <div class="row"><div><div class="name">sitemap.xml</div><div class="type">XML</div></div><div class="buttons"><a class="btn" href="./sitemap.xml">Open</a></div></div>
-      <div class="row"><div><div class="name">launcher-theme.css</div><div class="type">CSS</div></div><div class="buttons"><a class="btn" href="./launcher-theme.css">Open</a></div></div>
-      <div class="row"><div><div class="name">Minecraftia.ttf</div><div class="type">Font</div></div><div class="buttons"><a class="btn" href="./Minecraftia.ttf">Open</a></div></div>
-      <div class="row"><div><div class="name">dirt.png</div><div class="type">Image</div></div><div class="buttons"><a class="btn" href="./dirt.png">Open</a></div></div>
-      <div class="row"><div><div class="name">dirt_bg.png</div><div class="type">Image</div></div><div class="buttons"><a class="btn" href="./dirt_bg.png">Open</a></div></div>
-      <div class="row"><div><div class="name">dirt_bg_original.png</div><div class="type">Image</div></div><div class="buttons"><a class="btn" href="./dirt_bg_original.png">Open</a></div></div>
-      <div class="row"><div><div class="name">dirt_texture.png</div><div class="type">Image</div></div><div class="buttons"><a class="btn" href="./dirt_texture.png">Open</a></div></div>
-    </div>
-  </main>
-
-  <script>
-    function launchBlank(event,url){
-      event.preventDefault();
-
-      const win = window.open("about:blank","_blank");
-      if(!win) return;
-
-      try{
-        win.document.open();
-        win.document.write(
-          '<!doctype html>' +
-          '<html><head><title></title></head>' +
-          '<body style="margin:0;overflow:hidden;background:#fff">' +
-          '<iframe src="' + url.replace(/"/g,'&quot;') + '" ' +
-          'style="position:fixed;inset:0;width:100%;height:100%;border:0" ' +
-          'allow="fullscreen; autoplay; gamepad" allowfullscreen></iframe>' +
-          '</body></html>'
-        );
-        win.document.close();
-        win.focus();
-      }catch(e){
-        win.close();
-      }
-    }
-  </script>
+<main class="wrap"><section class="card">
+<h1>Launcher</h1>
+<p class="sub">Open the launcher in a separate tab.</p>
+<a href="./launcher.html" target="_blank" rel="noopener">Open Launcher</a>
+</section></main>
 </body>
 </html>
