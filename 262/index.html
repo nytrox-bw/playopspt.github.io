@@ -418,11 +418,7 @@
 			webgl2SelfTest: false,
 			// Use data URLs instead of the blob-origin probe.
 			disableBlobURLs: true,
-			// ?singlethread disables all workers; ?nomesh disables mesh workers.
-			singleThreadMode: true,
-				serverWorker: window.location.search.indexOf("singlethread") < 0,
-				meshWorkers: window.location.search.indexOf("singlethread") < 0
-					&& window.location.search.indexOf("nomesh") < 0,
+			// ?singlethread disables all workers; ?nomesh disables mesh workers.\n\t\t\t\tsingleThreadMode: true,\n\t\t\t\t// Keep 26.2 on the main thread for maximum browser compatibility.\n\t\t\t\t// The previous shell forced single-thread mode but still spawned both\n\t\t\t\t// Wasm-GC worker pools, which could leave the page stuck on the white shell.\n\t\t\t\tserverWorker: false,\n\t\t\t\tmeshWorkers: false,
 				meshWorkerVerify: false,
 				perfDebug: window.__eaglerPerfEnabled,
 				chunkUnloadHardCap: window.__eaglerChunkUnloadHardCap,
